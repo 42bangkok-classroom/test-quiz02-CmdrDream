@@ -21,3 +21,13 @@ type newUser = {
   };
 };
 export function addUser(newUser: newUser | null) {}
+
+let new_user: newUser = {
+  name: "Jane Smith",
+  phone: "987-654-3210",
+  address: null,
+};
+
+addUser(new_user);
+addUser(null);
+
