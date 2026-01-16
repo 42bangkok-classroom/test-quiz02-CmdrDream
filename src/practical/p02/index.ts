@@ -20,14 +20,36 @@ type newUser = {
     bs: string;
   };
 };
-export function addUser(newUser: newUser | null) {}
 
-let new_user: newUser = {
-  name: "Jane Smith",
-  phone: "987-654-3210",
-  address: null,
-};
+  addUser(newUser: newUser | null) {}
+function addUser(newUser: newUser | null) {
+  if (newUser === null) {
+    console.log("No user data provided.");
+    return;
+  }
+  
+  const {
+    name,
+    username = "N/A",
+    email = "N/A",
+    address,
+    phone,
+    website = "N/A",
+    company,
+  } = newUser;
+  const addressInfo = address
+    ? `${address.street}, ${address.suite}, ${address.city}, ${address.zipcode} (Lat: ${address.geo.lat}, Lng: ${address.geo.lng})`
+    : "N/A";
+  const companyInfo = company
+    ? `${company.name}, ${company.catchPhrase}, ${company.bs}`
+    : "N/A";
 
-addUser(new_user);
-addUser(null);
+  console.log(`Name: ${name}`);
+  console.log(`Username: ${username}`);
+  console.log(`Email: ${email}`);
+  console.log(`Address: ${addressInfo}`);
+  console.log(`Phone: ${phone}`);
+  console.log(`Website: ${website}`);
+  console.log(`Company: ${companyInfo}`);
+}
 
